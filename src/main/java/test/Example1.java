@@ -32,7 +32,8 @@ Fatma
 */
 public class Example1 {
 	
-	// I will define the logger
+	// I will define the logger --Remember to add nessary libraries --
+	
 	static final Logger LOG = LoggerFactory.getLogger(Example1.class);
 
 public static void main(String[] args) throws URISyntaxException {
