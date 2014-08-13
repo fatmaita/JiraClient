@@ -41,7 +41,11 @@ System.out.println("TESSSSSSTSS 1 ");
 final JiraRestClientFactory factory = new AsynchronousJiraRestClientFactory();
 final URI jiraServerUri = new URI("http://10.26.6.47/");
 final JiraRestClient restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "Fatma.AlMukhaini", "Fatma.AlMukhaini");
-final Issue issue = restClient.getIssueClient().getIssue("MO-1251").claim();
+//I entered issue number
+//The production project (eOman - MO) Issue issue = restClient.getIssueClient().getIssue("MO-1251").claim();
+//Nortel created test project for us -- GCloud Test (GT) --
+
+final Issue issue = restClient.getIssueClient().getIssue("GT-4").claim();
 System.out.println(issue);
 
 System.out.println("----------here logger will apear-----------");
@@ -60,9 +64,12 @@ restClient.getIssueClient().transition(issue.getTransitionsUri(), new Transition
 
 System.out.println("TESSSSSSTSS 3 ");
 
+Comment comment = Comment.valueOf("Here is my comment - Fatma");
+
+
 final Transition resolveIssueTransition = getTransitionByName(transitions, "Resolve Issue");
 Collection<FieldInput> fieldInputs = Arrays.asList(new FieldInput("resolution", "Incomplete"));
-final TransitionInput transitionInput = new TransitionInput(resolveIssueTransition.getId(), fieldInputs, Comment.valueOf("My comment"));
+final TransitionInput transitionInput = new TransitionInput(resolveIssueTransition.getId(), fieldInputs, comment);
 restClient.getIssueClient().transition(issue.getTransitionsUri(), transitionInput).claim();
 
 System.out.println("Jira task is done");
