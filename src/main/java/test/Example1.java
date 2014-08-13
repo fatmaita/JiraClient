@@ -23,6 +23,13 @@ import org.slf4j.LoggerFactory;
   /**
 Jira Client*
 */
+
+  /**
+Please dont run the code or if you wish to run it (Change credentials)*
+
+Thank you
+Fatma
+*/
 public class Example1 {
 	
 	// I will define the logger
