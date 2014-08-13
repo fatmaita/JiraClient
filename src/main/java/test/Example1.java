@@ -26,14 +26,12 @@ Jira Client*
 public class Example1 {
 	
 	// I will define the logger
-	
 	static final Logger LOG = LoggerFactory.getLogger(Example1.class);
 
 public static void main(String[] args) throws URISyntaxException {
 System.out.println("TESSSSSSTSS 1 ");
 
 final JiraRestClientFactory factory = new AsynchronousJiraRestClientFactory();
-/*... in production ...*/
 final URI jiraServerUri = new URI("http://10.26.6.47/");
 final JiraRestClient restClient = factory.createWithBasicHttpAuthentication(jiraServerUri, "Fatma.AlMukhaini", "Fatma.AlMukhaini");
 final Issue issue = restClient.getIssueClient().getIssue("MO-1251").claim();
@@ -59,16 +57,13 @@ final Transition resolveIssueTransition = getTransitionByName(transitions, "Reso
 Collection<FieldInput> fieldInputs = Arrays.asList(new FieldInput("resolution", "Incomplete"));
 final TransitionInput transitionInput = new TransitionInput(resolveIssueTransition.getId(), fieldInputs, Comment.valueOf("My comment"));
 restClient.getIssueClient().transition(issue.getTransitionsUri(), transitionInput).claim();
-//System.out.println(issue.getTransitionsUri());
 
 System.out.println("Jira task is done");
 }
 private static Transition getTransitionByName(Iterable<Transition> transitions, String transitionName)
 {
-// TODO Auto-generated method stub
 for (Transition transition : transitions) {
 if (transition.getName().equals(transitionName)) {
-//System.out.println(transition.getId());
 return transition;
 }
 }
